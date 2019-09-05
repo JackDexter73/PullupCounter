@@ -1,0 +1,141 @@
+﻿My WebAppProtocol
+
+
+First what I want to build:
+A simple Webapp that stores your pull ups or any other typer of exercise you make!
+Details: Coming
+
+
+
+Starting:
+1)Setting up the environment further
+1. 
+2. First start Django Project
+1. django-admin startproject PullupCounter
+3. Second Create an App with
+1. python manage.py startapp “appname“
+4. Add App to Settings
+1. enter in the settings.py and ad your app
+5. create an url.py folder
+1. add:from django.urls import path
+2. from . import views
+3. urlpatterns = [
+4. path('', views.homePageView, name='home')
+5. add it to your settings as well
+6. add include to the path thingy(from django import path, include)
+7. then add ‚(‘path you want‘, include(‘urlpy‘))
+6. create a view with
+1. from django.http import HttpResponse
+			# Create your views here.
+			def initialtest(request):
+				return HttpResponse("this is a test!")
+7. Now add template folder and a html file
+1. go to settings and add this to the template dictionary part [os.path.join(BASE_DIR, 'templates')],
+8. make view with the help of your template
+9. from django.views.generic import TemplateView
+class HomePageView(TemplateView):
+template_name = 'home.html'
+1. after that add in the url link file views.TEMPLATEVIEWclassname.as_view()
+
+
+For Tomorrow:
+	Learn a bit of Bootstrap: goal add some bootstrap to your html
+	Choose a good model for PullUpCounter
+	optional:
+	learn about advanced view options e.g. template based view
+
+
+1. I added the following model: class Exercises(models.Model):
+				exercise = models.CharField(default="pullup", max_length=100)
+				points = models.PositiveIntegerField()
+				date = models.DateField(blank=False, default=datetime.date.today)
+2. now we go back to the html and try to simply display what we enter
+1. now lets create a superuser
+2. we need to first migrate for that
+3. after connect app to admin with
+
+from blogsite.models import Comment
+
+admin.site.register(Comment)
+4. now add in python shell a few reps
+5. first check how many objects there are with Exercises.objects.all()   
+6. create one object in admin
+7. I did some adjustment to our model with choices
+8. after that i played around in the python shell
+9. after that i displayed the total in the html
+10. and now finally i try to write a function that is able to add a request to the database
+11. the problem is that i can‘t have two options it seems
+12. this is not a problem you let one action be performed and then to a httprequestredirect which goes to the next url doing something pretty cool
+13. I guess for today I‘m done
+1. Next step will be fixing the double s error
+2. adding Total counts for various exercises
+3. and maybe a day count but we will see how it goes
+14. For now I‘m done thank you for the work I got quite a bit done today well done!
+
+1. Fixed the double ss erros apperantly in the dropdown select options the value needs to be pushup not pushups what is weird though it stored in the database under pullup but when it came to the display time it did display it under else and not under pullup but i fixed it now and its working so should be fine maybe i wrote pull up wrong or something
+2. I added the Total counts for various exercises including pushup row and pull ups and it displayed it correctly i did so in the views.py
+3. the day count is not so importan for me now because there are other errors that need to be fixed first
+1. fix the if submitted with nothing error
+2. display stuff based exercisetype when submitting
+3. Split my functions better
+4. get nicer urls
+5. learn to deal with classes better
+
+
+The error I feared the most is gone I fixed it! If you type nothing it still displays beautifully!
+
+The error was the if you input empty string he actually wanted to store it as an integer but this is not possible so i just added a simple if else statement in the views.py file!
+
+Maybe I can get the second thing going as well!
+
+I won‘t focus on this for now because I don‘t think it is actually that practical!
+
+What I might do though is create 5 links including a navbar for all the exercises so you can jump from pull up to push etc:
+
+That would mean every exercise deserves its own view!
+
+Thats great isn‘t it and I already know how to do it!!!
+
+First a base html with a nice navbar
+
+then I will also stick to the exercises I‘ve already done four new links in the url.py file make sure they are linked and then I can add reps to any of them!
+Awesome
+
+I dont want to create the navbar now so i will just use the one i Have for now!
+Created the navbar and the i can put in the links manually !
+So now lets try to make the links so that we can click from one to the next!
+For this we need to give it a name in the urls.py folder!
+Links are done and working it automatically redirects as well I would say the weekly goal is completed!
+
+
+Next steps to consider:
+beautify the front end
+nicer inline total displays
+buttons textfield and dropdown same size or atleast nicer look
+nicer h1 tag for the counter
+shorten the functions
+pep8 your python
+Add a daily Total
+Add a login page widget
+Get to the point to have multiple users
+specify the exercises in the dropdown field e.g. diamond pushup wide archer etc.
+get project on github or bitbucket
+host it online
+connect it to Arduino
+
+So there a quite a lot of steps there!
+
+For now I will take a break! It‘s Friday I have done my work. I will see the next week what I could do
+
+
+
+So I think I will start with the front end today!
+Ok i fuck front end
+lets try to connect the arduino to the django thing!
+
+Next step follow this tutorial I guess: If the goal is really connecting the two!
+
+https://alejandrok5.wordpress.com/2011/06/27/arduino-with-django-and-python/
+
+https://stackoverflow.com/questions/38904147/django-python-and-arduino
+

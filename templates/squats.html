@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 align="center">Squats Counter</h1>
+
+<div align="center">
+<form action="/add/" method="POST">{% csrf_token %}
+    <input type="number" placeholder="how many Pullups" name="reps">
+    <select name="typeofexercise" id="" method="POST">
+        <option value="squat">squats</option>
+        <option value="pullup">pullups</option>
+        <option value="pushup">pushups</option>
+        <option value="row">rows</option>
+    </select>
+    <input type="submit" value="submit">
+</form>
+</div>
+
+
+
+<p align="center">Total: {{ squats }} squats</p>
+
+{% endblock %}
